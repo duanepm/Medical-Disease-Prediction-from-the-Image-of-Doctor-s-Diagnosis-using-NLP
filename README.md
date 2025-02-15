@@ -124,9 +124,5 @@ Access the application at [http://127.0.0.1:5000](http://127.0.0.1:5000).
 - Datasets sourced from Kaggle.
 - Inspired by real-world medical use cases and academic resources.
 
-## Contributors
-- **Amith S (22BCE1656)**: Development and Implementation.
-- **Duane Ch**: Co-development and Testing.
-
 ## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License.
