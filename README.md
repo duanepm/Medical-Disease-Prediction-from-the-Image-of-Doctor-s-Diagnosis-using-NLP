@@ -1,4 +1,4 @@
-# 🏥 Medical Disease Prediction from Patient Symptom Reports
+# 🏥 Medical Disease Prediction from the Image of Patient Symptom Reports
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/duanepm/Medical-Disease-Prediction-from-the-Image-of-Patient-Symptoms-Report-using-NLP)
 ![GitHub contributors](https://img.shields.io/github/contributors/duanepm/Medical-Disease-Prediction-from-the-Image-of-Patient-Symptoms-Report-using-NLP)
