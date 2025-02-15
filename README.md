@@ -1,128 +1,109 @@
-# Medical Disease Prediction Repository
+# 🏥 Medical Disease Prediction from Patient Symptom Reports
 
-## Overview
-This repository contains code and resources for medical disease prediction using both traditional machine learning and deep learning approaches. It includes training scripts, pre-trained models, and a Flask-based deployment framework.
+![GitHub repo size](https://img.shields.io/github/repo-size/duanepm/Medical-Disease-Prediction-from-the-Image-of-Patient-Symptoms-Report-using-NLP)
+![GitHub contributors](https://img.shields.io/github/contributors/duanepm/Medical-Disease-Prediction-from-the-Image-of-Patient-Symptoms-Report-using-NLP)
+![GitHub last commit](https://img.shields.io/github/last-commit/duanepm/Medical-Disease-Prediction-from-the-Image-of-Patient-Symptoms-Report-using-NLP)
+![License](https://img.shields.io/github/license/duanepm/Medical-Disease-Prediction-from-the-Image-of-Patient-Symptoms-Report-using-NLP)
 
-## Directory Structure
+## 🚀 Overview
+This repository contains a **Medical Disease Prediction System** that analyzes patient symptom reports using **Natural Language Processing (NLP)**. The model leverages both **Support Vector Machines (SVM)** and **fine-tuned BERT** to classify diseases from textual descriptions, improving accuracy and reliability. The project also features a **Flask-based web app** for easy interaction.
+
+---
+## 📂 Directory Structure
 ```
-├── bert_training
-│   ├── BERT_training_notebook.ipynb
-│   ├── clinical-stopwords.txt
-│   ├── label_encoder.pkl
-│   ├── model
-│   │   ├── config.json
-│   │   └── model.safetensors
-│   ├── test.csv
-│   ├── tokenizer
-│   │   ├── special_tokens_map.json
-│   │   ├── tokenizer.json
-│   │   ├── tokenizer_config.json
-│   │   └── vocab.txt
-│   └── train.csv
-├── flask
-│   ├── app.py
-│   ├── best_svc_model.joblib
-│   ├── clinical-stopwords.txt
-│   ├── label_encoder.joblib
-│   ├── templates
-│   │   └── index.html
-│   └── tfidf_vectorizer.joblib
-├── testing
-│   ├── bert
-│   │   ├── label_encoder.pkl
-│   │   ├── model
-│   │   │   ├── config.json
-│   │   │   └── model.safetensors
-│   │   └── tokenizer
-│   │       ├── special_tokens_map.json
-│   │       ├── tokenizer.json
-│   │       ├── tokenizer_config.json
-│   │       └── vocab.txt
-│   ├── best_svc_model.joblib
-│   ├── clinical-stopwords.txt
-│   ├── label_encoder.joblib
-│   ├── test images
-│   ├── testing_notebook.ipynb
-│   └── tfidf_vectorizer.joblib
-└── training
-    ├── best_svc_model.joblib
-    ├── clinical-stopwords.txt
-    ├── dataset
-    │   ├── disease_data_test.csv
-    │   ├── disease_data_train.csv
-    │   ├── image_dataset_test
-    │   └── image_dataset_train
-    ├── label_encoder.joblib
-    ├── test.csv
-    ├── tfidf_vectorizer.joblib
-    ├── train.csv
-    └── training_notebook.ipynb
+📦 Medical-Disease-Prediction
+├── 📁 bert_training        # Fine-tuning BERT for text-based disease prediction
+│   ├── 📝 BERT_training_notebook.ipynb
+│   ├── 📜 clinical-stopwords.txt
+│   ├── 🏗️ model/ (BERT model files)
+│   ├── 📄 tokenizer/ (Tokenizer files)
+│   ├── 📊 train.csv | test.csv (Datasets)
+│
+├── 📁 flask              # Flask web application for deployment
+│   ├── 📝 app.py (Main server script)
+│   ├── 🏗️ model artifacts (SVM model, label encoder, TF-IDF vectorizer)
+│   ├── 📜 templates/index.html
+│
+├── 📁 testing            # Model evaluation on unseen data
+│   ├── 📝 testing_notebook.ipynb
+│   ├── 🏗️ bert/ (BERT model & tokenizer)
+│   ├── 🏗️ svc_model/ (SVM model files)
+│
+├── 📁 training           # Training traditional ML models
+│   ├── 📝 training_notebook.ipynb
+│   ├── 📊 train.csv | test.csv | image datasets
+│   ├── 🏗️ Pre-trained artifacts (SVM model, encoder, TF-IDF vectorizer)
+│
+└── 📄 README.md          # This file
 ```
+---
+## 📌 Key Features
+✅ **Machine Learning (SVM):** Achieves **97% accuracy** on text-based disease classification.
+✅ **Deep Learning (BERT):** Fine-tuned **BERT** for enhanced prediction performance.
+✅ **Web Deployment:** Flask-based web app for real-time predictions.
+✅ **Pre-processing Pipeline:** Includes **stopword removal, TF-IDF vectorization**, and **text tokenization**.
+✅ **Modular Codebase:** Well-structured for **training, testing, and deployment**.
 
-## Files and Directories
+---
+## 🔬 Model Development Steps
+### 1️⃣ Data Preprocessing
+- Loaded the dataset containing patient symptom reports.
+- Performed **text cleaning**, including stopword removal using `clinical-stopwords.txt`.
+- Converted text data into numerical form using **TF-IDF vectorization**.
+- Split the dataset into **training (80%)** and **testing (20%)** sets.
 
-### `bert_training`
-Contains resources and scripts for training and fine-tuning a BERT model for disease prediction.
+### 2️⃣ Traditional Machine Learning Model Training
+Experimented with the following ML models:
+- **Logistic Regression**
+- **Decision Tree Classifier**
+- **Random Forest Classifier**
+- **K-Nearest Neighbors (KNN)**
+- **Support Vector Machine (SVM)**
+- **XGBoost**
 
-- **`BERT_training_notebook.ipynb`**: Jupyter notebook demonstrating the training pipeline.
-- **Model and Tokenizer**: Pre-trained BERT model files and tokenizer configurations.
-- **Dataset**: Training and test CSV files.
+**SVM was selected as the best-performing model** due to its highest accuracy of **97%**.
 
-### `flask`
-Contains the Flask application for model deployment.
+### 3️⃣ Deep Learning with BERT
+- Fine-tuned a **BERT-based model** for improved disease classification.
+- Tokenized text input using **Hugging Face's tokenizer**.
+- Trained the model on **GPU** to enhance learning efficiency.
 
-- **`app.py`**: Main Flask server script.
-- **`templates/index.html`**: Frontend for interacting with the model.
-- **Pre-trained Artifacts**: Includes SVM model, label encoder, and TF-IDF vectorizer files.
+### 4️⃣ Model Testing
+- Evaluated the SVM and BERT models using **testing_notebook.ipynb**.
+- Compared their accuracy scores, confirming SVM’s strong performance.
 
-### `testing`
-Resources for testing the trained models on new data.
-
-- **`testing_notebook.ipynb`**: Notebook for testing predictions.
-- **BERT model resources**: Includes model and tokenizer files.
-- **SVM model resources**: Includes the pre-trained SVM model and vectorizer.
-
-### `training`
-Contains resources for training the SVM model.
-
-- **`training_notebook.ipynb`**: Jupyter notebook for the SVM training pipeline.
-- **Dataset**: Includes disease data CSVs and image datasets.
-- **Pre-trained Artifacts**: Trained SVM model, label encoder, and TF-IDF vectorizer.
-
-## How to Use
-
-### 1. Clone the Repository
+### 5️⃣ Deploying the Web App
 ```bash
-git clone <repository_url>
-cd <repository_directory>
-```
-
-### 2. Set Up the Environment
-Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Train the Models
-Use the notebooks in the `training` and `bert_training` directories for training the SVM and BERT models, respectively.
-
-### 4. Test the Models
-Run the `testing_notebook.ipynb` in the `testing` directory to evaluate model performance on new data.
-
-### 5. Deploy the Flask Application
-Navigate to the `flask` directory and run:
-```bash
+cd flask
 python app.py
 ```
-Access the application at [http://127.0.0.1:5000](http://127.0.0.1:5000).
+Visit **[http://127.0.0.1:5000](http://127.0.0.1:5000)** to access the web interface.
 
-## Results
-- **Machine Learning (SVM)**: Achieved 97% accuracy.
-- **Deep Learning (BERT)**: Fine-tuned BERT model for robust text-based classification.
+---
+## 📊 Results
+| Model       | Accuracy |
+|------------|----------|
+| **SVM**    | 97%      |
+| **BERT**   | 92.9%    |
 
-## Acknowledgments
-- Datasets sourced from Kaggle.
-- Inspired by real-world medical use cases and academic resources.
+---
+## 📸 Screenshots
+### 🔹 Image Dataset Overview (Patient Symptoms Report)
+![Image Dataset Overview (Patient Symptoms Report)](training/dataset/image_dataset_train/patient_40_report.png)
 
-## License
-This project is licensed under the MIT License.
+### 🔹 Web Interface
+![Web UI](assets/web_app_screenshot.png)
+
+
+
+---
+## 🏆 Acknowledgments
+- Datasets sourced from **Kaggle** and real-world clinical datasets.
+- Inspired by **medical diagnosis AI research** and NLP-based disease classification.
+
+---
+## 📜 License
+This project is licensed under the **MIT License**.
+
+💡 **Contributions are welcome!** Feel free to fork and submit a PR. 🚀
+
